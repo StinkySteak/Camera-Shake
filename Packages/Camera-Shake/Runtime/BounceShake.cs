@@ -15,6 +15,21 @@ namespace CameraShake
         int bounceIndex;
         float t;
 
+        public void Reset()
+        {
+            pars = null;
+            sourcePosition = null;
+            attenuation = 1;
+            direction = default;
+            previousWaypoint = default;
+            currentWaypoint = default;
+            bounceIndex = default;
+            t = default;
+
+            CurrentDisplacement = default;
+            IsFinished = default;
+        }
+
         public BounceShake()
         {
 
@@ -145,6 +160,16 @@ namespace CameraShake
             /// </summary>
             [Tooltip("How strength falls with distance from the shake source.")]
             public Attenuator.StrengthAttenuationParams attenuation;
+
+            public void Reset()
+            {
+                positionStrength = 0.05f;
+                rotationStrength = 0.1f;
+                axesMultiplier = new Displacement(Vector2.one, Vector3.forward);
+                freq = 25f;
+                numBounces = 5;
+                randomness = 0.5f;
+            }
         }
     }
 }

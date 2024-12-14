@@ -18,7 +18,10 @@ namespace CameraShake
             if (_indexerShake >= POOL_SIZE)
                 _indexerShake = 0;
 
-            return _bounceShakes[_indexerShake++];
+            BounceShake shake = _bounceShakes[_indexerShake++];
+            shake.Reset();
+
+            return shake;
         }
 
         public BounceShake.Params GetParams()
@@ -26,7 +29,10 @@ namespace CameraShake
             if (_indexerParams >= POOL_SIZE)
                 _indexerParams = 0;
 
-            return _params[_indexerParams++];
+            BounceShake.Params param = _params[_indexerParams++];
+            param.Reset();
+
+            return param;
         }
 
         public void InitPool()
